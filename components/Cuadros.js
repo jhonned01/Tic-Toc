@@ -1,25 +1,6 @@
 import React, { useState } from "react";
 import Button from "../components/Botton";
-const Cuadros = () => {
-  const [value, setValue] = useState(Array(9).fill(null));
-  const [next, setNext] = useState(true);
-
-  const handleClickCuadros = (position) => {
-    if (value[position]) {
-      return;
-    }
-    setValue((elem) =>
-      elem.map((item, key) => {
-        if (position === key) {
-          return next ? "X" : "O";
-        }
-        return item;
-      })
-    );
-    setNext(!next);
-  };
-
-  console.log(value);
+const Cuadros = ({ value, handleClickCuadros }) => {
   return (
     <div className="h-64 grid grid-cols-3  gap-4 ">
       <div className=" cuadros ">
