@@ -1,29 +1,51 @@
 import React, { useState } from "react";
+import ButtonHistory from "../components/ButtonHistory";
 import Cuadros from "../components/Cuadros";
 import { calculateWinner } from "../helpers";
 const Index = () => {
-  const [value, setValue] = useState(Array(9).fill(null));
-  const [next, setNext] = useState(false);
+  const [history, setHistory] = useState([
+    {
+      value: Array(9).fill(null),
+      next: true,
+    },
+  ]);
 
-  const winner = calculateWinner(value);
+  const [currentMove, setCurrentMove] = useState(0);
+
+  const current = history[currentMove];
+
+  const winner = calculateWinner(current.value);
 
   const mensaje = winner
     ? `Ganador es: ${winner}`
-    : `Siguiente Jugador: ${next ? "X" : "O"}`;
+    : `Siguiente Jugador: ${current.next ? "X" : "O"}`;
 
   const handleClickCuadros = (position) => {
-    if (value[position] || winner) {
+    if (current.value[position] || winner) {
       return;
     }
-    setValue((elem) =>
-      elem.map((item, key) => {
+    setHistory((prev) => {
+      const last = prev[prev.length - 1];
+      const newValue = last.value.map((item, key) => {
         if (position === key) {
-          return next ? "X" : "O";
+          return last.next ? "X" : "O";
         }
         return item;
-      })
-    );
-    setNext(!next);
+      });
+      console.log("====================================");
+      console.log(last);
+      console.log("====================================");
+      console.log(newValue);
+      console.log("====================================");
+      console.log(prev);
+
+      return prev.concat({ value: newValue, next: !last.next });
+    });
+    setCurrentMove((prev) => prev + 1);
+  };
+
+  const moveTo = (move) => {
+    setCurrentMove(move);
   };
 
   return (
@@ -34,7 +56,15 @@ const Index = () => {
           <h2 className="text-xl">{mensaje}</h2>
         </section>
         <section className="">
-          <Cuadros value={value} handleClickCuadros={handleClickCuadros} />
+          <Cuadros
+            value={current.value}
+            handleClickCuadros={handleClickCuadros}
+          />
+          <ButtonHistory
+            history={history}
+            moveTo={moveTo}
+            currentMove={currentMove}
+          />
         </section>
       </div>
     </section>
