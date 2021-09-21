@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ButtonHistory from "../components/ButtonHistory";
 import Cuadros from "../components/Cuadros";
+import StatusMenssage from "../components/StatusMenssage";
 import { calculateWinner } from "../helpers";
 const Index = () => {
   const [history, setHistory] = useState([
@@ -15,10 +16,6 @@ const Index = () => {
   const current = history[currentMove];
 
   const winner = calculateWinner(current.value);
-
-  const mensaje = winner
-    ? `Ganador es: ${winner}`
-    : `Siguiente Jugador: ${current.next ? "X" : "O"}`;
 
   const handleClickCuadros = (position) => {
     if (current.value[position] || winner) {
@@ -53,7 +50,7 @@ const Index = () => {
       <div className="w-72 space-y-4 ">
         <section className="text-center">
           <h1 className="text-3xl font-bold">Tic Toc</h1>
-          <h2 className="text-xl">{mensaje}</h2>
+          <StatusMenssage winner={winner} current={current} />
         </section>
         <section className="">
           <Cuadros
