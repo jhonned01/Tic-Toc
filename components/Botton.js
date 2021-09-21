@@ -7,7 +7,7 @@ const Botton = ({ value, onClick }) => {
         key={value}
         onClick={onClick}
         type="button"
-        className="w-full h-full rounded-2xl hover:bg-blue-400 "
+        className={`w-full h-full rounded-2xl hover:bg-blue-400`}
       >
         {value}
       </button>

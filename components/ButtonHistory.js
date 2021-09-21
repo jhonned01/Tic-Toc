@@ -6,13 +6,15 @@ const ButtonHistory = ({ history, moveTo, currentMove }) => {
       {history.map((_, key) => (
         <li key={key}>
           <button
-            className={`${key === currentMove ? "font-bold" : ""}`}
+            className={`cursor-pointer ${
+              key === currentMove ? "font-bold" : ""
+            }`}
             type="button"
             onClick={() => {
               moveTo(key);
             }}
           >
-            {key === 0 ? "Inicia el juego" : `ver movimiento #${key}`}
+            {key === 0 ? "Movimientos:" : `ver movimiento #${key}`}
           </button>
         </li>
       ))}
