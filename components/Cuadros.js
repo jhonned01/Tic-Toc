@@ -17,7 +17,6 @@ const Cuadros = ({ value, handleClickCuadros, combinacion, winner }) => {
     }
   }, [winner, combinacion]);
 
-  console.log(buttonWin);
   return (
     <div className="h-64 grid grid-cols-3  gap-4 ">
       <div className={`cuadros ${buttonWin[0] === "win" && "bg-blue-700"}`}>

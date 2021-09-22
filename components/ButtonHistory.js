@@ -2,9 +2,9 @@ import React from "react";
 
 const ButtonHistory = ({ history, moveTo, currentMove }) => {
   return (
-    <ul>
+    <ul className="grid grid-cols-2 gap-3 ">
       {history.map((_, key) => (
-        <li key={key}>
+        <li key={key} className="">
           <button
             className={`cursor-pointer ${
               key === currentMove ? "font-bold" : ""

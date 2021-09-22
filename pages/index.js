@@ -47,7 +47,7 @@ const Index = () => {
 
   return (
     <section className="w-screen h-screen flex justify-center items-center">
-      <div className="w-72 space-y-4 ">
+      <div className="w-73 space-y-4 ">
         <section className="text-center">
           <h1 className="text-3xl font-bold">Tic Toc</h1>
 
