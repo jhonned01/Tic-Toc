@@ -8,7 +8,7 @@ const StatusMenssage = ({ winner, current }) => {
   const nextPlay =
     !winner && !noMovesLeft && `Siguiente Jugador: ${current.next ? "X" : "O"}`;
   return (
-    <h2>
+    <h2 className="text-blue-800">
       {ganador}
       {empate}
       {nextPlay}

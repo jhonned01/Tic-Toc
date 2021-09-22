@@ -46,10 +46,10 @@ const Index = () => {
   };
 
   return (
-    <section className="w-screen h-screen flex justify-center items-center">
-      <div className="w-73 space-y-4 ">
+    <section className="w-screen h-screen flex justify-center items-center bg-blue-100">
+      <div className="w-80 space-y-4 ">
         <section className="text-center">
-          <h1 className="text-3xl font-bold">Tic Toc</h1>
+          <h1 className="text-3xl font-bold text-blue-900">Tic Toc</h1>
 
           <StatusMenssage winner={winner} current={current} />
         </section>
@@ -63,7 +63,7 @@ const Index = () => {
           <button
             type="button"
             onClick={handleClickNewGame}
-            className="w-full text-center font-bold cursor-pointer"
+            className="w-full h-11 rounded-xl text-center font-bold cursor-pointer ring-4 ring-blue-300 text-blue-900 hover:scale-110"
           >
             Iniciar Nuevo Juego
           </button>
